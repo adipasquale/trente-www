@@ -15,7 +15,7 @@ const srcGite = [gite1, gite2, gite3, gite4, gite4, gite5, gite6]
 const photosGite = srcGite.map(src => ({ src }))
 
 const apiUrl =
-  process.env.ENVIRONMENT === 'production'
+  process.env.NODE_ENV === 'production'
     ? 'https://api.trente.dipasquale.fr/v1' : 'http://localhost:3001/v1'
 
 const Gallery = ({ photos, photoSize = 150 }) => (
