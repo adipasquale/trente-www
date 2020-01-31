@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { theme, ThemeProvider, Box, Text, Image, Button } from '@chakra-ui/core'
-import './App.css'
+import { spin } from './App.css'
 import NewGuestForm from './components/NewGuestForm'
 import Jess from './images/jess.png'
 import Kanye from './images/kanye.png'
@@ -13,6 +13,7 @@ import gite3 from './images/gite/gite3.jpg'
 import gite4 from './images/gite/gite4.jpg'
 import gite5 from './images/gite/gite5.jpg'
 import gite6 from './images/gite/gite6.jpg'
+import me from './images/me.png'
 const srcGite = [gite1, gite2, gite3, gite4, gite4, gite5, gite6]
 const photosGite = srcGite.map(src => ({ src }))
 
@@ -63,7 +64,10 @@ function App () {
     <ThemeProvider theme={theme}>
       <Box maxWidth={500} margin='auto' p={2} paddingBottom={6}>
         <Box>
-          <Text as='h1'>🎉 30 ans d'Adrien 🎉</Text>
+          <Box display='flex' alignItems='center'>
+            <Text as='h1'>🎉 30 ans d'Adrien 🎉</Text>
+            <Image src={me} maxWidth={100} animation='spin infinite 2s linear' borderRadius={50} marginLeft={50} />
+          </Box>
           <Text>
             Vous êtes chaleureusement conviés à un week-end pour fêter mon
             passage à l'âge adulte (peut-être). Famille, amis, anciens et nouveaux ça devrait teufer
