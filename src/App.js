@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
+
 import React, { useEffect, useState } from 'react'
-import { theme, ThemeProvider, Box, Text, Image, Button, Input, Stack } from '@chakra-ui/core'
+import { theme, ThemeProvider, Box, Text, Image, Button } from '@chakra-ui/core'
 import './App.css'
-// import Map from './images/map.png'
+import NewGuestForm from './components/NewGuestForm'
 import Jess from './images/jess.png'
 import Kanye from './images/kanye.png'
 import Barak from './images/barak.png'
@@ -40,106 +42,6 @@ const Gallery = ({ photos, photoSize = 150 }) => (
   </Box>
 )
 
-const NewGuestForm = ({ addGuest }) => {
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [success, setSuccess] = useState(false)
-  const [errors, setErrors] = useState([])
-  const onSubmit = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    window.fetch(`${apiUrl}/guests`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ guest: { name: name || '', email: email || '' } })
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          addGuest(data.guest)
-          setSuccess(true)
-        } else if (data.errors) {
-          setErrors(data.errors)
-        }
-      })
-    return false
-  }
-  if (success) {
-    return (
-      <Box padding={6} textAlign='center'>
-        Merciiii à vite 😘
-      </Box>
-    )
-  }
-  return (
-    <Box>
-      <Text as='h2'>OK je viens !</Text>
-      <form onSubmit={onSubmit}>
-        <Stack spacing={1}>
-          <Box display='flex'>
-            <Box minWidth={60} marginRight={2} paddingTop={3} textAlign='right'>
-              <label htmlFor='name'>
-                Nom(s)
-              </label>
-            </Box>
-            <Box flex={1}>
-              <Input
-                width='auto'
-                value={name}
-                onChange={e => setName(e.currentTarget.value)}
-                name='name'
-                isInvalid={Object.keys(errors).indexOf('name') >= 0}
-                placeholder='Martin'
-                id='name'
-              />
-              {Object.keys(errors).indexOf('name') >= 0 &&
-                <Text color='red'>{errors.name[0]}</Text>}
-            </Box>
-          </Box>
-          <Box display='flex'>
-            <Box minWidth={60} marginRight={2} textAlign='right'>
-              <label htmlFor='email' paddingTop={3}>
-                Email
-              </label>
-            </Box>
-            <Box flex={1}>
-              <Input
-                width='auto'
-                value={email}
-                onChange={e => setEmail(e.currentTarget.value)}
-                isInvalid={Object.keys(errors).indexOf('email') >= 0}
-                name='email'
-                placeholder='martin@scorsese.com'
-                id='email'
-              />
-              {Object.keys(errors).indexOf('email') >= 0 &&
-                <Text color='red'>{errors.email[0]}</Text>}
-            </Box>
-          </Box>
-          <Box display='flex' alignItems='baseline'>
-            <Box minWidth={60} marginRight={2} textAlign='right'>
-              <label htmlFor='photo'>
-                Selfie
-              </label>
-            </Box>
-            <Box flex={1}>
-              <Input
-                width='auto'
-                name='photo'
-                type='file'
-                id='photo'
-                accept='image/*'
-                capture='camera'
-              />
-            </Box>
-          </Box>
-          <Button type='submit'>Je m'inscris</Button>
-        </Stack>
-      </form>
-    </Box>
-  )
-}
-
 function App () {
   const [guests, setGuests] = useState([])
   useEffect(() => {
@@ -151,7 +53,7 @@ function App () {
     setGuests([guest, ...guests])
   }
   const guestsPhotos = (
-    guests.map(g => ({ title: g.name }))
+    guests.map(g => ({ title: g.name, src: g.photoUrl }))
       .concat(
         [
           { src: Barak, title: 'Bob' },
@@ -174,7 +76,7 @@ function App () {
         <Box>
           <Text as='h2'>C'est quand ?</Text>
           <Text>Du vendredi 17 juillet après-midi au dimanche 18 après-midi</Text>
-          <a href='#'>Ajouter au calendrier</a>
+          <Button variant='link'>Ajouter au calendrier</Button>
         </Box>
         <Box>
           <Text as='h2'>C'est où ?</Text>
@@ -233,10 +135,13 @@ function App () {
           </Text>
         </Box>
         <Box>
-          <Text as='h2'>Il y aura qui ?</Text>
+          <Text as='h2'>Qui sera là ?</Text>
+          <Text>
+            On est {guests.length} pour l'instant, on n'attend que toi
+          </Text>
           <Gallery photos={guestsPhotos} />
         </Box>
-        <NewGuestForm addGuest={addGuest} />
+        <NewGuestForm addGuest={addGuest} apiUrl={apiUrl} />
       </Box>
     </ThemeProvider>
   )
