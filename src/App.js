@@ -52,16 +52,13 @@ function App () {
   const addGuest = (guest) => {
     setGuests([guest, ...guests])
   }
-  const guestsPhotos = (
-    guests.map(g => ({ title: g.name, src: g.photoUrl }))
-      .concat(
-        [
-          { src: Barak, title: 'Bob' },
-          { src: Kanye, title: 'K' },
-          { src: Jess, title: 'Jess' }
-        ]
-      )
-  )
+  const fakeGuests = [
+    { src: Barak, title: 'Bob' },
+    { src: Kanye, title: 'K' },
+    { src: Jess, title: 'Jess' }
+  ]
+  const guestsPhotos = guests.map(g => ({ title: g.name, src: g.photoUrl }))
+    .concat(fakeGuests)
   return (
     <ThemeProvider theme={theme}>
       <Box maxWidth={500} margin='auto' p={2} paddingBottom={6}>
@@ -136,7 +133,7 @@ function App () {
         <Box>
           <Text as='h2'>Qui sera là ?</Text>
           <Text>
-            On est {guests.length} pour l'instant, on n'attend que toi
+            On est {guests.length + fakeGuests.length} pour l'instant, on n'attend que toi
           </Text>
           <Gallery photos={guestsPhotos} />
         </Box>
