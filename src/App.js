@@ -14,6 +14,10 @@ import gite6 from './images/gite/gite6.jpg'
 const srcGite = [gite1, gite2, gite3, gite4, gite4, gite5, gite6]
 const photosGite = srcGite.map(src => ({ src }))
 
+const apiUrl =
+  process.env.ENVIRONMENT === 'production'
+    ? 'https://api.trente.dipasquale.fr/v1' : 'http://localhost:3001/v1'
+
 const Gallery = ({ photos, photoSize = 150 }) => (
   <Box display='flex' overflow='scroll' paddingBottom={3}>
     {photos.map(({ src, title }, idx) =>
@@ -44,7 +48,7 @@ const NewGuestForm = ({ addGuest }) => {
   const onSubmit = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    window.fetch('http://localhost:3001/v1/guests', {
+    window.fetch(`${apiUrl}/guests`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guest: { name: name || '', email: email || '' } })
@@ -139,7 +143,7 @@ const NewGuestForm = ({ addGuest }) => {
 function App () {
   const [guests, setGuests] = useState([])
   useEffect(() => {
-    window.fetch('http://localhost:3001/v1/guests')
+    window.fetch(`${apiUrl}/guests`)
       .then(res => res.json())
       .then(data => setGuests(data))
   }, [])
