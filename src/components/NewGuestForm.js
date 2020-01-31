@@ -24,6 +24,9 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
           setErrors(data.errors)
         }
       })
+      .catch(() =>
+        window.alert('déso il y a eu un petit souci ... écris moi !')
+      )
     return false
   }
   if (success) {
@@ -87,7 +90,7 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 type='file'
                 id='photo'
                 accept='image/*'
-                capture='camera'
+                capture='user'
                 isInvalid={Object.keys(errors).indexOf('photo') >= 0}
               />
               {Object.keys(errors).indexOf('photo') >= 0 &&

@@ -64,13 +64,12 @@ function App () {
   )
   return (
     <ThemeProvider theme={theme}>
-      <Box maxWidth={500} margin='auto' paddingBottom={6}>
+      <Box maxWidth={500} margin='auto' p={2} paddingBottom={6}>
         <Box>
           <Text as='h1'>🎉 30 ans d'Adrien 🎉</Text>
           <Text>
             Vous êtes chaleureusement conviés à un week-end pour fêter mon
-            passage à l'âge adulte (peut-être). Famille, amis il y a plein de
-            place, plus on est nombreux plus on s'amuse !
+            passage à l'âge adulte (peut-être). Famille, amis, anciens et nouveaux ça devrait teufer
           </Text>
         </Box>
         <Box>
@@ -119,7 +118,7 @@ function App () {
         </Box>
         <Box>
           <Text as='h2'>Qui est invité ?</Text>
-          <Text>Tout le monde qui arrive ici</Text>
+          <Text>Tout le monde qui arrive ici est convié !</Text>
           <Text>
             Les enfants et les +1 sont les bienvenus.
             Il y a 30 couchages officiels, et si on est plus on s'arrangera
@@ -128,7 +127,7 @@ function App () {
         </Box>
         <Box>
           <Text as='h2'>Combien ça coûte ?</Text>
-          <Text>Le gîte est à la charge d'OUT OF SCREEN 🚀vive l'informatique.</Text>
+          <Text>Le gîte est à la charge d'OUT OF SCREEN 🚀 merci l'informatique.</Text>
           <Text>
             Il vous reste donc le transport et on fera probablement une petite
             collecte pour les vivres et les produits liquides festifs.
