@@ -2,6 +2,17 @@
 
 import React, { useState } from 'react'
 import { Box, Text, Button, Input, Stack } from '@chakra-ui/core'
+import UUID from 'uuid'
+
+const uuidKey = 'trenteBrowserUUID'
+
+const getBrowserUUID = () => {
+  const existingUUID = window.localStorage.getItem(uuidKey)
+  if (existingUUID) return existingUUID
+  const newUuid = UUID.v4()
+  window.localStorage.setItem(uuidKey, newUuid)
+  return newUuid
+}
 
 const NewGuestForm = ({ addGuest, apiUrl }) => {
   const [success, setSuccess] = useState(false)
@@ -97,6 +108,7 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 <Text color='red'>{errors.photo[0]}</Text>}
             </Box>
           </Box>
+          <input type='hidden' name='guest[browser_uuid]' value={getBrowserUUID()} />
           <Button type='submit'>Inscription ⭐️</Button>
         </Stack>
       </form>
