@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Image, useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter } from '@chakra-ui/core'
+import { Box, Image, useDisclosure, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from '@chakra-ui/core'
 
 import p1 from '../images/gite/gite1.jpg'
 import p2 from '../images/gite/gite2.jpg'
@@ -7,14 +7,12 @@ import p3 from '../images/gite/gite3.jpg'
 import p4 from '../images/gite/gite4.jpg'
 import p5 from '../images/gite/gite5.jpg'
 import p6 from '../images/gite/gite6.jpg'
-const photos = [p1, p2, p3, p4, p4, p5, p6]
-
-const PhotoModal = ({ isOpen, onClose }) => {
-  return (
-    <>
-    </>
-  )
-}
+import p7 from '../images/gite/gite7.jpg'
+import p8 from '../images/gite/gite8.jpg'
+import p9 from '../images/gite/gite9.jpg'
+import p10 from '../images/gite/gite10.jpg'
+import p11 from '../images/gite/gite11.jpg'
+const photos = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11]
 
 const GitePhotosGallery = () => {
   const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure()
