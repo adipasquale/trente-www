@@ -42,15 +42,18 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
       <Text as='h2' className='register'>
         🙋🏽‍♀️ <strong>OK</strong> je viens !
       </Text>
+      <Text>
+        Bon choix ! inscris-toi <i>per favore</i>, c'est plus simple pour organiser 🙇‍♂️ Les selfies sont obligatoires pour cause de divertissement personnel.
+      </Text>
       <form onSubmit={onSubmit} ref={formElt}>
-        <Stack spacing={1}>
+        <Stack spacing={3}>
           <Box display='flex'>
             <Box minWidth={60} marginRight={2} paddingTop={3} textAlign='right'>
               <label htmlFor='guest[name]'>
                 Nom(s)
               </label>
             </Box>
-            <Box flex={1}>
+            <Box flex={1} display='flex' flexDirection='column'>
               <Input
                 width='auto'
                 name='guest[name]'
@@ -59,7 +62,7 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 id='name'
               />
               {Object.keys(errors).indexOf('name') >= 0 &&
-                <Text color='red'>{errors.name[0]}</Text>}
+                <Text marginTop={0} color='red.600'>{errors.name[0]}</Text>}
             </Box>
           </Box>
           <Box display='flex'>
@@ -68,7 +71,7 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 Email
               </label>
             </Box>
-            <Box flex={1}>
+            <Box flex={1} display='flex' flexDirection='column'>
               <Input
                 width='auto'
                 isInvalid={Object.keys(errors).indexOf('email') >= 0}
@@ -77,7 +80,7 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 id='email'
               />
               {Object.keys(errors).indexOf('email') >= 0 &&
-                <Text color='red'>{errors.email[0]}</Text>}
+                <Text marginTop={0} color='red.600'>{errors.email[0]}</Text>}
             </Box>
           </Box>
           <Box display='flex' alignItems='baseline'>
@@ -86,18 +89,18 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
                 Selfie
               </label>
             </Box>
-            <Box flex={1}>
-              <Input
-                width='auto'
+            <Box flex={1} display='flex' flexDirection='column'>
+              <input
                 name='guest[photo]'
                 type='file'
                 id='photo'
                 accept='image/*'
                 capture='user'
-                isInvalid={Object.keys(errors).indexOf('photo') >= 0}
+                border={0}
+                style={{ paddingLeft: 0 }}
               />
               {Object.keys(errors).indexOf('photo') >= 0 &&
-                <Text color='red'>{errors.photo[0]}</Text>}
+                <Text marginTop={0} color='red.600'>{errors.photo[0]}</Text>}
             </Box>
           </Box>
           <input type='hidden' name='guest[browser_uuid]' value={browserUUID} />
