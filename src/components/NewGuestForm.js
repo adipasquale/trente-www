@@ -39,7 +39,9 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
   }
   return (
     <Box>
-      <Text as='h2'>OK je viens !</Text>
+      <Text as='h2' className='register'>
+        🙋🏽‍♀️ <strong>OK</strong> je viens !
+      </Text>
       <form onSubmit={onSubmit} ref={formElt}>
         <Stack spacing={1}>
           <Box display='flex'>

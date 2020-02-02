@@ -24,22 +24,34 @@ function App () {
     <ThemeProvider theme={theme}>
       <Box maxWidth={500} margin='auto' p={2} paddingBottom={6}>
         <Box>
-          <Box display='flex' alignItems='center'>
-            <Text as='h1'>🎉 30 ans d'Adrien 🎉</Text>
-            <Image src={me} maxWidth={100} animation='spin infinite 2s linear' borderRadius={50} marginLeft={50} />
+          <Box display='flex' alignItems='baseline' justifyContent='space-between'>
+            <Image src={me} maxWidth={60} animation='spin infinite 2s linear' borderRadius={50} marginRight={50} />
+            <Text as='h1'>30 ans d'Adrien</Text>
+            <Image src={me} maxWidth={60} animation='spin-backwards infinite 2s linear' borderRadius={50} marginLeft={50} />
           </Box>
-          <Text>
-            Vous êtes chaleureusement conviés à un week-end pour fêter mon
-            passage à l'âge adulte (peut-être). Famille, amis, anciens et nouveaux ça devrait teufer
-          </Text>
+          <Box display='flex' alignItems='center'>
+            <Text fontSize='xl' marginRight={2}>🎉</Text>
+            <Box>
+              <Text>
+                Vous êtes chaleureusement convié·es à un week-end pour fêter mon
+                passage à l'âge adulte. J'ai envie de réunir la famille et les différents groupes d'amis pour faire la fête tous ensemble !
+              </Text>
+              <Text>Facebook c'est has-been donc toutes les infos se trouvent ici et tu es invité·e à t'inscrire tout en bas</Text>
+            </Box>
+            <Text fontSize='xl' marginRight={2}>🎉</Text>
+          </Box>
         </Box>
         <Box>
-          <Text as='h2'>C'est quand ?</Text>
+          <Text as='h2' className='when'>
+            📅 C'est <strong>quand</strong> ?
+          </Text>
           <Text>Du vendredi 17 juillet après-midi au dimanche 18 après-midi</Text>
           <Button variant='link'>Ajouter au calendrier</Button>
         </Box>
         <Box>
-          <Text as='h2'>C'est où ?</Text>
+          <Text as='h2' className='where'>
+            🌎 C'est <strong>où</strong> ?
+          </Text>
           <Text>au Moulin des Gondrillers, à 1h30 à l'ouest de Paris</Text>
           <GitePhotosGallery />
           <Text>Adresse: 61300 St Martin d'Ecublei - Orne</Text>
@@ -64,7 +76,9 @@ function App () {
           </Box>
         </Box>
         <Box>
-          <Text as='h2'>Qu'est-ce qu'on va faire ?</Text>
+          <Text as='h2' className='activities'>
+          🎳 Qu'est-ce qu'on va <strong>faire</strong> ?
+          </Text>
           <ul>
             <li>Se la kiffer dans la piscine</li>
             <li>Se la kiffer dehors</li>
@@ -78,7 +92,9 @@ function App () {
           </ul>
         </Box>
         <Box>
-          <Text as='h2'>Qui est invité ?</Text>
+          <Text as='h2' className='welcome'>
+            🤼‍♀️ Qui est <strong>invité</strong> ?
+          </Text>
           <Text>Tout le monde qui arrive ici est convié !</Text>
           <Text>
             Les enfants et les +1 sont les bienvenus.
@@ -87,7 +103,9 @@ function App () {
           </Text>
         </Box>
         <Box>
-          <Text as='h2'>Combien ça coûte ?</Text>
+          <Text as='h2' className='price'>
+          💰 Combien ça <strong>coûte</strong> ?
+          </Text>
           <Text>Le gîte est à la charge d'OUT OF SCREEN 🚀 merci l'informatique.</Text>
           <Text>
             Il vous reste donc le transport et on fera probablement une petite
@@ -95,7 +113,9 @@ function App () {
           </Text>
         </Box>
         <Box>
-          <Text as='h2'>Qui sera là ?</Text>
+          <Text as='h2' className='guests'>
+            🤚 <strong>Qui</strong> sera là ?
+          </Text>
           <GuestList
             guests={guests}
             currentGuest={currentGuest}
