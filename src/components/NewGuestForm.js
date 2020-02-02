@@ -106,6 +106,21 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
           <input type='hidden' name='guest[browser_uuid]' value={browserUUID} />
           <Button type='submit'>Inscription ⭐️</Button>
         </Stack>
+        <Box marginTop={3} color='#666'>
+          <small>
+            mais, mais, mais je m'appelle David j'ai pas de smartphone,{' '}
+            <a
+              href='#'
+              style={{ color: '#666' }}
+              onClick={e => {
+                e.preventDefault()
+                window.alert('débrouille-toi 😘')
+              }}
+            >
+              comment fais-je ?
+            </a>
+          </small>
+        </Box>
       </form>
     </Box>
   )

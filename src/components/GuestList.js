@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Text, Image, Button } from '@chakra-ui/core'
 import ConfirmDeleteGuest from './ConfirmDeleteGuest'
 import Jess from '../images/jess.png'
-import Kanye from '../images/kanye.png'
+import Che from '../images/che.jpg'
 import Barak from '../images/barak.png'
 
 const GuestList = ({ guests, currentGuest, setGuests }) => {
@@ -10,7 +10,7 @@ const GuestList = ({ guests, currentGuest, setGuests }) => {
 
   const fakeGuests = [
     { src: Barak, name: 'Bob' },
-    { src: Kanye, name: 'K' },
+    { src: Che, name: 'Ernesto' },
     { src: Jess, name: 'Jess' }
   ]
   const allGuests = guests.concat(fakeGuests)
@@ -38,9 +38,9 @@ const GuestList = ({ guests, currentGuest, setGuests }) => {
             overflow='hidden'
             marginLeft={idx > 0 ? 2 : 0}
           >
-            <Image objectFit='cover' maxHeight={150} src={src} />
-            <Box textAlign='center' paddingY={2}>
-              <Text marginBottom={1}>
+            <Image width='100%' height={150} objectFit='cover' src={src} />
+            <Box textAlign='center' padding={2}>
+              <Text marginBottom={1} whiteSpace='nowrap' overflow='hidden'>
                 {name}
               </Text>
               {isCurrent &&
