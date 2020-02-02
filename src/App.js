@@ -8,11 +8,7 @@ import GuestList from './components/GuestList'
 import GitePhotosGallery from './components/GitePhotosGallery'
 import browserUUID from './lib/browserUUID'
 import me from './images/me.png'
-
-const apiUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://api.trente.dipasquale.fr/v1' : 'http://localhost:3001/v1'
-
+import apiUrl from './lib/apiUrl'
 function App () {
   const [guests, setGuests] = useState([])
   useEffect(() => {
@@ -100,7 +96,11 @@ function App () {
         </Box>
         <Box>
           <Text as='h2'>Qui sera là ?</Text>
-          <GuestList guests={guests} currentGuest={currentGuest} />
+          <GuestList
+            guests={guests}
+            currentGuest={currentGuest}
+            setGuests={setGuests}
+          />
         </Box>
         {!currentGuest &&
           <NewGuestForm addGuest={addGuest} apiUrl={apiUrl} />}
