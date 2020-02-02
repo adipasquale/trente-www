@@ -2,46 +2,16 @@
 
 import React, { useEffect, useState } from 'react'
 import { theme, ThemeProvider, Box, Text, Image, Button } from '@chakra-ui/core'
-import { spin } from './App.css'
+import './App.css'
 import NewGuestForm from './components/NewGuestForm'
-import Jess from './images/jess.png'
-import Kanye from './images/kanye.png'
-import Barak from './images/barak.png'
-import gite1 from './images/gite/gite1.jpg'
-import gite2 from './images/gite/gite2.jpg'
-import gite3 from './images/gite/gite3.jpg'
-import gite4 from './images/gite/gite4.jpg'
-import gite5 from './images/gite/gite5.jpg'
-import gite6 from './images/gite/gite6.jpg'
+import GuestList from './components/GuestList'
+import GitePhotosGallery from './components/GitePhotosGallery'
+import browserUUID from './lib/browserUUID'
 import me from './images/me.png'
-const srcGite = [gite1, gite2, gite3, gite4, gite4, gite5, gite6]
-const photosGite = srcGite.map(src => ({ src }))
 
 const apiUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://api.trente.dipasquale.fr/v1' : 'http://localhost:3001/v1'
-
-const Gallery = ({ photos, photoSize = 150 }) => (
-  <Box display='flex' overflow='scroll' paddingBottom={3}>
-    {photos.map(({ src, title }, idx) =>
-      <Box
-        key={idx}
-        flexShrink={0}
-        width={photoSize}
-        border='1px solid #ccc'
-        rounded='lg'
-        overflow='hidden'
-        marginLeft={idx > 0 ? 2 : 0}
-      >
-        <Image objectFit='cover' maxHeight={photoSize} src={src} />
-        {title &&
-          <Box p={2} textAlign='center'>
-            <Text>{title}</Text>
-          </Box>}
-      </Box>
-    )}
-  </Box>
-)
 
 function App () {
   const [guests, setGuests] = useState([])
@@ -53,13 +23,7 @@ function App () {
   const addGuest = (guest) => {
     setGuests([guest, ...guests])
   }
-  const fakeGuests = [
-    { src: Barak, title: 'Bob' },
-    { src: Kanye, title: 'K' },
-    { src: Jess, title: 'Jess' }
-  ]
-  const guestsPhotos = guests.map(g => ({ title: g.name, src: g.photoUrl }))
-    .concat(fakeGuests)
+  const currentGuest = guests.find(g => g.browser_uuid === browserUUID)
   return (
     <ThemeProvider theme={theme}>
       <Box maxWidth={500} margin='auto' p={2} paddingBottom={6}>
@@ -81,7 +45,7 @@ function App () {
         <Box>
           <Text as='h2'>C'est où ?</Text>
           <Text>au Moulin des Gondrillers, à 1h30 à l'ouest de Paris</Text>
-          <Gallery photos={photosGite} photoSize={250} />
+          <GitePhotosGallery />
           <Text>Adresse: 61300 St Martin d'Ecublei - Orne</Text>
           {/* <Image src={Map} alt='Map St Martin Ecublei' maxWidth={400} /> */}
           <Box p={3}>
@@ -136,12 +100,10 @@ function App () {
         </Box>
         <Box>
           <Text as='h2'>Qui sera là ?</Text>
-          <Text>
-            On est {guests.length + fakeGuests.length} pour l'instant, on n'attend que toi
-          </Text>
-          <Gallery photos={guestsPhotos} />
+          <GuestList guests={guests} currentGuest={currentGuest} />
         </Box>
-        <NewGuestForm addGuest={addGuest} apiUrl={apiUrl} />
+        {!currentGuest &&
+          <NewGuestForm addGuest={addGuest} apiUrl={apiUrl} />}
       </Box>
     </ThemeProvider>
   )
