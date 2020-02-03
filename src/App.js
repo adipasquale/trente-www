@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
 import React, { useEffect, useState } from 'react'
-import { theme, ThemeProvider, Box, Text, Image, Button, Stack } from '@chakra-ui/core'
+import { theme, ThemeProvider, Box, Text, Image, Button, Stack, Spinner } from '@chakra-ui/core'
 import './App.css'
 import NewGuestForm from './components/NewGuestForm'
 import GuestList from './components/GuestList'
@@ -11,10 +11,14 @@ import me from './images/me.png'
 import apiUrl from './lib/apiUrl'
 function App () {
   const [guests, setGuests] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     window.fetch(`${apiUrl}/guests`)
       .then(res => res.json())
-      .then(data => setGuests(data))
+      .then(data => {
+        setGuests(data)
+        setIsLoading(false)
+      })
   }, [])
   const addGuest = (guest) => {
     setGuests([guest, ...guests])
@@ -115,13 +119,24 @@ function App () {
             <Text as='h2' className='guests'>
               🤚 <strong>Qui</strong> sera là ?
             </Text>
-            <GuestList
-              guests={guests}
-              currentGuest={currentGuest}
-              setGuests={setGuests}
-            />
+            {isLoading &&
+              <Box textAlign='center' p={5}>
+                <Spinner
+                  thickness='4px'
+                  speed='0.65s'
+                  emptyColor='gray.200'
+                  color='blue.500'
+                  size='xl'
+                />
+              </Box>}
+            {!isLoading &&
+              <GuestList
+                guests={guests}
+                currentGuest={currentGuest}
+                setGuests={setGuests}
+              />}
           </Box>
-          {!currentGuest &&
+          {!isLoading && !currentGuest &&
             <NewGuestForm addGuest={addGuest} apiUrl={apiUrl} />}
         </Stack>
       </Box>

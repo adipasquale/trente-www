@@ -27,9 +27,9 @@ const GuestList = ({ guests, currentGuest, setGuests }) => {
         {currentGuest ? ' en te comptant' : ' on attend que toi !'}
       </Text>
       <Box display='flex' overflow='scroll' paddingBottom={3}>
-        {guestsPhotos.map(({ src, name, isCurrent }, idx) =>
+        {guestsPhotos.map(({ src, name, isCurrent, id }, idx) =>
           <Box
-            key={idx}
+            key={id}
             flexShrink={0}
             width={150}
             border='1px'
