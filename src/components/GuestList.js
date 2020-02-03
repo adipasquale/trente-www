@@ -24,7 +24,7 @@ const GuestList = ({ guests, currentGuest, setGuests }) => {
     <>
       <Text>
         On est {allGuests.length} pour l'instant,
-        {currentGuest ? ' en te comptant' : ' on attend que toi !'}
+        {currentGuest ? ' en te comptant' : ' on n\'attend que toi !'}
       </Text>
       <Box display='flex' overflow='scroll' paddingBottom={3}>
         {guestsPhotos.map(({ src, name, isCurrent, id }, idx) =>
