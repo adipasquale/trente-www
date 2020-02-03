@@ -1,14 +1,16 @@
-import React from 'react'
-import { AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, Button, AlertDialogBody, Text, useToast } from '@chakra-ui/core'
+import React, { useState } from 'react'
+import { AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, Button, AlertDialogBody, Text, useToast, Spinner } from '@chakra-ui/core'
 import apiUrl from '../lib/apiUrl'
 import browserUUID from '../lib/browserUUID'
 
 const ConfirmDeleteGuest = ({ isOpen, setIsOpen, currentGuest, guests, setGuests }) => {
   const toast = useToast()
   const onClose = () => setIsOpen(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const cancelCurrentGuest = async () => {
-    if (!currentGuest) return
+    if (!currentGuest || isSubmitting) return
+    setIsSubmitting(true)
     const formData = new window.FormData()
     formData.set('browser_uuid', currentGuest.browser_uuid)
     const res = await window.fetch(
@@ -57,8 +59,20 @@ const ConfirmDeleteGuest = ({ isOpen, setIsOpen, currentGuest, guests, setGuests
             <Button ref={cancelRef} onClick={onClose}>
               Retour
             </Button>
-            <Button variantColor='red' onClick={cancelCurrentGuest} ml={3}>
-              Confirmer désinscription
+            <Button
+              variantColor='red'
+              onClick={cancelCurrentGuest} ml={3}
+              disabled={isSubmitting}
+            >
+              {!isSubmitting && 'Confirmer désinscription'}
+              {isSubmitting &&
+                <Spinner
+                  thickness='4px'
+                  speed='0.65s'
+                  emptyColor='gray.200'
+                  color='blue.500'
+                  size='sm'
+                />}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
