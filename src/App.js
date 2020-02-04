@@ -57,6 +57,7 @@ function App () {
             <Text>au Moulin des Gondrillers, à 1h30 à l'ouest de Paris</Text>
             <GitePhotosGallery />
             <Text>Adresse: 61300 St Martin d'Ecublei - Orne</Text>
+            <Text>La gare de l'Aigle 🦅 est à 4km. C'est 1h15 depuis Montparnasse, départ au plus tard 19h54 le vendredi soir <i>a priori</i> pour les gros bosseurs.</Text>
             {/* <Image src={Map} alt='Map St Martin Ecublei' maxWidth={400} /> */}
             <Box p={3}>
               <iframe
@@ -82,10 +83,11 @@ function App () {
             🎳 Qu'est-ce qu'on va <strong>faire</strong> ?
             </Text>
             <ul>
-              <li>Se la kiffer dans la piscine</li>
-              <li>Se la kiffer dehors</li>
-              <li>Se la kiffer dedans</li>
+              <li>Profiter de la piscine</li>
+              <li>Profiter du dehors</li>
+              <li>Profiter du dedans</li>
               <li>La fête</li>
+              <li>LA SOUDE</li>
               <li>Apéro fluvial sur les barques</li>
               <li>Piste de ski artificielle dans le moulin</li>
               <li>Lucha Libre</li>

@@ -45,7 +45,10 @@ const NewGuestForm = ({ addGuest, apiUrl }) => {
         🙋🏽‍♀️ <strong>OK</strong> je viens !
       </Text>
       <Text>
-        Bon choix ! inscris-toi <i>per favore</i>, c'est plus simple pour organiser 🙇‍♂️ Les selfies sont obligatoires pour cause de divertissement personnel.
+        Bon choix ! inscris-toi <i>per favore</i>, c'est plus simple pour organiser 🙇‍♂️
+      </Text>
+      <Text>
+        Les selfies <b>inédits</b> sont obligatoires pour cause de divertissement personnel. Contrôles à l'entrée du moulin par Melak le videur et ses biceps hors-normes.
       </Text>
       <form onSubmit={onSubmit} ref={formElt}>
         <Stack spacing={3}>
