@@ -8,22 +8,15 @@ import Barak from '../images/barak.png'
 const GuestList = ({ guests, currentGuest, setGuests }) => {
   const [confirmDeleteModalIsOpen, setConfirmDeleteModalIsOpen] = useState()
 
-  const fakeGuests = [
-    { src: Barak, name: 'Bob' },
-    { src: Che, name: 'Ernesto' },
-    { src: Jess, name: 'Jess' }
-  ]
-  const allGuests = guests.concat(fakeGuests)
   const guestsPhotos = guests.map(g => ({
     name: g.name,
     src: g.photoUrl,
     isCurrent: g === currentGuest
   }))
-    .concat(fakeGuests)
   return (
     <>
       <Text>
-        On est {allGuests.length} pour l'instant,
+        On est {guests.length} pour l'instant,
         {currentGuest ? ' en te comptant' : ' on n\'attend que toi !'}
       </Text>
       <Box display='flex' overflow='scroll' paddingBottom={3}>
