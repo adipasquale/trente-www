@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Text, Image, Button } from '@chakra-ui/core'
 import ConfirmDeleteGuest from './ConfirmDeleteGuest'
-import Jess from '../images/jess.png'
-import Che from '../images/che.jpg'
-import Barak from '../images/barak.png'
 
 const GuestList = ({ guests, currentGuest, setGuests }) => {
   const [confirmDeleteModalIsOpen, setConfirmDeleteModalIsOpen] = useState()
