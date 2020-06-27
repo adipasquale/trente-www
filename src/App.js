@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
 import React, { useEffect, useState } from 'react'
-import { theme, ThemeProvider, Box, Text, Image, Button, Stack, Spinner } from '@chakra-ui/core'
+import { theme, ThemeProvider, Box, Text, Image, Button, Stack, Spinner, List, ListItem } from '@chakra-ui/core'
 import './App.css'
 import NewGuestForm from './components/NewGuestForm'
 import GuestList from './components/GuestList'
@@ -27,7 +27,7 @@ function App () {
   return (
     <ThemeProvider theme={theme}>
       <Box maxWidth={500} margin='auto' p={2} paddingBottom={50} backgroundColor='#fff'>
-        <Stack spacing={30}>
+        <Stack spacing={4}>
           <Box p={3}>
             <Box display='flex' alignItems='center' justifyContent='space-between'>
               <Image src={me} maxWidth={60} animation='spin infinite 2s linear' borderRadius={50} marginRight={5} />
@@ -38,8 +38,39 @@ function App () {
               Vous êtes chaleureusement convié·es à un week-end pour fêter mon
               passage à l'âge adulte. J'ai envie de réunir la famille et les différents groupes d'amis pour faire la fête tous ensemble !
             </Text>
-            <Text fontSize='xl' textAlign='center'>🎉</Text>
-            <Text>Facebook c'est has-been donc toutes les infos se trouvent ici et tu es invité·e à t'inscrire tout en bas</Text>
+          </Box>
+          <Box>
+            <Text as='h2' className='journeys'>
+              🚌 Infos <strong>Trajets</strong>
+            </Text>
+            <p>En train Montparnasse - Gare de L’Aigle (~40 euros A/R mais moins cher avec la carte WE)</p>
+            <Stack direction='row' spacing={10} pl={4}>
+              <Box>
+                🚅Allers Vendredi
+                <List p={0}>
+                  <ListItem>17h13 - 18h43</ListItem>
+                  <ListItem>18h13 - 19h49</ListItem>
+                  <ListItem>19h43 - 21h16</ListItem>
+                </List>
+              </Box>
+              <Box>
+                🚅 Retours Dimanche
+                <List p={0}>
+                  <ListItem>15h51 - 17h15</ListItem>
+                  <ListItem>17h43 - 19h12</ListItem>
+                  <ListItem>18h51 - 20h06</ListItem>
+                  <ListItem>20h40 - 22h05</ListItem>
+                  <ListItem>21h45 - 23h07</ListItem>
+                </List>
+              </Box>
+            </Stack>
+            <p>🚗 Et en voiture on a quelques covoitureurs, n'hésitez pas à rajouter vos propositions !</p>
+            <div style={{ height: '200px', overflow: 'hidden' }}>
+              <iframe
+                style={{ width: '100%', height: '250px' }}
+                src='https://docs.google.com/spreadsheets/d/1KXSClwmlSbZbOonm5aDI5to7WKCGFddEpfglKFDlgg4/edit?rm=minimal'
+              />
+            </div>
           </Box>
           <Box>
             <Text as='h2' className='when'>

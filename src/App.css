@@ -50,6 +50,9 @@ h2.welcome strong::before {
 h2.price strong::before {
   background: #FFE70F;
 }
+h2.journeys strong::before {
+  background: #872597;
+}
 h2.guests strong::before {
   background: #FFE70F;
 }
