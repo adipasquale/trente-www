@@ -46,7 +46,7 @@ function App () {
             <p>En train Montparnasse - Gare de L’Aigle (~40 euros A/R mais moins cher avec la carte WE)</p>
             <Stack direction='row' spacing={10} pl={4}>
               <Box>
-                🚅Allers Vendredi
+                🚅 Allers Vendredi
                 <List p={0}>
                   <ListItem>17h13 - 18h43</ListItem>
                   <ListItem>18h13 - 19h49</ListItem>
