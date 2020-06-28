@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
 import React, { useEffect, useState } from 'react'
-import { theme, ThemeProvider, Box, Text, Image, Button, Stack, Spinner, List, ListItem } from '@chakra-ui/core'
+import { theme, ThemeProvider, Box, Text, Image, Stack, Spinner, List, ListItem } from '@chakra-ui/core'
 import './App.css'
 import NewGuestForm from './components/NewGuestForm'
 import GuestList from './components/GuestList'
@@ -64,13 +64,15 @@ function App () {
                 </List>
               </Box>
             </Stack>
-            <p>🚗 Et en voiture on a quelques covoitureurs, n'hésitez pas à rajouter vos propositions !</p>
-            <div style={{ height: '200px', overflow: 'hidden' }}>
+            <p>🚗  Il y a quelques covoitureurs, n'hésitez pas à rajouter vos propositions !</p>
+            <Box style={{ height: '200px', overflow: 'hidden' }}>
               <iframe
+                title='journeys'
                 style={{ width: '100%', height: '250px' }}
                 src='https://docs.google.com/spreadsheets/d/1KXSClwmlSbZbOonm5aDI5to7WKCGFddEpfglKFDlgg4/edit?rm=minimal'
               />
-            </div>
+            </Box>
+            <p><small><a href='https://docs.google.com/spreadsheets/d/1KXSClwmlSbZbOonm5aDI5to7WKCGFddEpfglKFDlgg4/edit'>modifiable</a> depuis un ordi, pas depuis un smartphone</small></p>
           </Box>
           <Box>
             <Text as='h2' className='when'>
